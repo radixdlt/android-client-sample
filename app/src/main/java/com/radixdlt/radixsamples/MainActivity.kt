@@ -9,6 +9,10 @@ import com.radixdlt.client.application.identity.EncryptedRadixIdentity
 import com.radixdlt.client.core.RadixUniverse
 import java.io.File
 
+/**
+ * MainActivity which ensures the creation of a RadixIdentity before allowing
+ * any interaction with the api
+ * */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var radixAddressTextView: TextView

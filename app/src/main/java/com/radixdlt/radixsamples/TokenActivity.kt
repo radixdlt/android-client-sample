@@ -18,13 +18,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * TokenActivity demonstrates how it is possible to send tokens with unencrypted or encrypted
+ * data attached on the Radix DLT ledger.
+ * */
 class TokenActivity : AppCompatActivity() {
 
-    val TAG = TokenActivity::class.java.simpleName
+    private val TAG = TokenActivity::class.java.simpleName
 
-    lateinit var disposableStatus: Disposable
-    lateinit var disposableTransfers: Disposable
-    var transactions = ""
+    private lateinit var disposableStatus: Disposable
+    private lateinit var disposableTransfers: Disposable
+    private var transactions = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,7 @@ class TokenActivity : AppCompatActivity() {
         // -------------------------------------------------------------------
 
 
+        // Below button executes the action of sending tokens
         tokenSendTokenButton.setOnClickListener {
 
             val data: Data
@@ -71,21 +76,35 @@ class TokenActivity : AppCompatActivity() {
                 }
 
                 if (tokenMessageEditText.text.isNotEmpty()) {
+                    // Builds encrypted data
+                    // see DataActivity for extra details
                     data = Data.DataBuilder()
                             .bytes(tokenMessageEditText.text.toString().toByteArray())
-                            .unencrypted()
+                            .addReader(api.myPublicKey)
                             .build()
 
+                    // To attach unencrypted messages use below builder
+                    // see DataActivity for extra details
+//                    data = Data.DataBuilder()
+//                            .bytes(tokenMessageEditText.text.toString().toByteArray())
+//                            .unencrypted()
+//                            .build()
+
+                    // Calling the sendTokens() api, the previously build data is passed as an
+                    // argument and hence attached to the transaction.
                     result = api.sendTokens(RadixAddress.fromString(
                             tokenAddressEditText.text.toString().trim()),
                             Amount.of(amount, Asset.TEST),
                             data)
                 } else {
+                    // Calling the sendTokens() api without data only sends the transaction
                     result = api.sendTokens(RadixAddress.fromString(
                             tokenAddressEditText.text.toString().trim()),
                             Amount.of(amount, Asset.TEST))
                 }
 
+                // It is possible to subscribe to the result by converting it to an observable
+                // leveraging rx streams.
                 disposableStatus = result.toObservable()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -104,7 +123,9 @@ class TokenActivity : AppCompatActivity() {
             }
         }
 
+        // Below button retrieves all token transfers of a particular token
         tokensRetrieveAllTransfersButton.setOnClickListener {
+
             if (tokenSendTokenButton.isEnabled ) {
                 Toast.makeText(this, "Already listening for new transactions...", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -112,6 +133,11 @@ class TokenActivity : AppCompatActivity() {
 
             tokenStatusTextView.text = "Retrieving transactions..."
 
+            // Calling getMyTokenTransfers from the api passing an asset name Asset will return
+            // all the transfers from that particular token.
+            //
+            // NOTE: For knowing if transfers where sent or received, the TokenTransfer in the
+            //       subscription has various properties such as to, from etc
             val transfers = api.getMyTokenTransfers(Asset.TEST)
             disposableTransfers = transfers.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

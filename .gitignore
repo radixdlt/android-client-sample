@@ -1,11 +1,31 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches/build_file_checksums.ser
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-.DS_Store
+# Built application files
 /build
+/*/build/
 /captures
 .externalNativeBuild
+
+# Local configuration file (sdk path, etc)
+local.properties
+keystore.properties
+/app/fabric.properties
+
+# Gradle generated files
+.gradle/
+
+# Signing files
+.signing/
+
+# User-specific configurations
+.idea
+*.iml
+*.jks
+*.pem
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

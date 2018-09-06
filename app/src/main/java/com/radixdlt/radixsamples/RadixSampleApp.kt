@@ -11,6 +11,6 @@ class RadixSampleApp : Application() {
 
         // In order to connect to the Radix Universe, we must bootstrap
         // to a specific universe. ALPHANET is currently the recommended one
-        RadixUniverse.bootstrap(Bootstrap.ALPHANET)
+        RadixUniverse.bootstrap(Bootstrap.HIGHGARDEN)
     }
 }
