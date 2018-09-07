@@ -9,6 +9,4 @@ Samples using Radix DLT client libraries (Project is able to use either of the a
 Screenshots
 -----------
 
-![Main Screen](screenshots/main_screen.jpg "Main Screen")
-![Store Data](screenshots/store_data.jpg "Store Data")
-![Send Tokens](screenshots/send_tokens.jpg "Send Tokens")
+<img src="screenshots/main_screen.jpg" width="250"><img src="screenshots/main_screen.jpg" width="250"><img src="screenshots/main_screen.jpg" width="250">
