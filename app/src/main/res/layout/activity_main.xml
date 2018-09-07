@@ -27,7 +27,7 @@
       android:layout_height="wrap_content"
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
-      android:layout_marginTop="32dp"
+      android:layout_marginTop="8dp"
       android:text="Address will be shown here once created"
       android:textSize="15sp"
       android:textAlignment="center"
@@ -35,6 +35,37 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+  <TextView
+      android:id="@+id/radixBalanceTextView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:text="Balance from address"
+      android:textSize="20sp"
+      android:textStyle="bold"
+      android:textAlignment="center"
+      android:textIsSelectable="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/radixAddress"/>
+
+  <Button
+      android:id="@+id/getTestTokensButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:text="Get test tokens"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/radixBalanceTextView"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <Button
       android:id="@+id/createIdentity"
@@ -44,9 +75,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="32dp"
       android:text="Create an identity"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/radixAddress"/>
+      app:layout_constraintTop_toBottomOf="@+id/getTestTokensButton"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <Button
       android:id="@+id/deleteIdentity"
@@ -55,10 +89,13 @@
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       android:text="Delete identity"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/createIdentity"/>
+      app:layout_constraintTop_toBottomOf="@+id/createIdentity"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <Button
       android:id="@+id/storingRetrievingData"
@@ -67,10 +104,13 @@
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="32dp"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       android:text="Storing and Retrieving Data"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/deleteIdentity"/>
+      app:layout_constraintTop_toBottomOf="@+id/deleteIdentity"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <Button
       android:id="@+id/sendingRetrievingTokens"
@@ -79,11 +119,14 @@
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       android:text="Sending and Retrieving Tokens"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/storingRetrievingData"
-      app:layout_constraintVertical_bias="0.0"/>
+      app:layout_constraintVertical_bias="0.0"
+      tools:backgroundTint="@color/colorAccent"/>
 
 </android.support.constraint.ConstraintLayout>

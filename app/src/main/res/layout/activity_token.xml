@@ -69,9 +69,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
       android:text="Send Tokens"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tokenMessageEditText"/>
+      app:layout_constraintTop_toBottomOf="@+id/tokenMessageEditText"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <TextView
       android:id="@+id/tokenStatusTextView"
@@ -94,9 +97,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
       android:text="RETRIEVE ALL TOKEN TRANSFERS"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tokenStatusTextView"/>
+      app:layout_constraintTop_toBottomOf="@+id/tokenStatusTextView"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <ScrollView
       android:id="@+id/messagesScrollView"

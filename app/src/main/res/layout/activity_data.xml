@@ -57,9 +57,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="24dp"
       android:text="Store Unencrypted"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/storeDataEditText"/>
+      app:layout_constraintTop_toBottomOf="@+id/storeDataEditText"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <Button
       android:id="@+id/storeEncryptedButton"
@@ -69,9 +72,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
       android:text="Store Encrypted"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/storeUnencryptedButton"/>
+      app:layout_constraintTop_toBottomOf="@+id/storeUnencryptedButton"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <TextView
       android:id="@+id/statusTextView"
@@ -94,9 +100,12 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
       android:text="READ MESSAGES"
+      android:textColor="@android:color/white"
+      android:theme="@style/AccentButton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/statusTextView"/>
+      app:layout_constraintTop_toBottomOf="@+id/statusTextView"
+      tools:backgroundTint="@color/colorAccent"/>
 
   <ScrollView
       android:id="@+id/messagesScrollView"
