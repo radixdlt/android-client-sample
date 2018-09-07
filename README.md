@@ -9,4 +9,4 @@ Samples using Radix DLT client libraries (Project is able to use either of the a
 Screenshots
 -----------
 
-<img src="screenshots/main_screen.jpg" width="250"><img src="screenshots/main_screen.jpg" width="250"><img src="screenshots/main_screen.jpg" width="250">
+<img src="screenshots/main_screen.jpg" width="250"><img src="screenshots/store_data.jpg" width="250"><img  src="screenshots/send_tokens.jpg" width="250">
