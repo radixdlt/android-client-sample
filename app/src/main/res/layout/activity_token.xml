@@ -23,6 +23,20 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
 
+  <TextView
+      android:id="@+id/addressFormatTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="19dp"
+      android:layout_marginTop="8dp"
+      android:text="Recipient Address format in Base58:\n9hNbmkxpHZBn7jfTC6CynwPep9GByxSwRYy7doJXivvCSNhsYtU"
+      android:textSize="11sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tokenTitleTextView"/>
+
   <EditText
       android:id="@+id/tokenAddressEditText"
       android:layout_width="match_parent"
@@ -34,7 +48,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tokenTitleTextView"/>
+      app:layout_constraintTop_toBottomOf="@+id/addressFormatTextView"/>
 
   <EditText
       android:id="@+id/tokenAmountEditText"
