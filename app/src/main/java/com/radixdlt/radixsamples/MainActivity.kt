@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.radixdlt.client.application.RadixApplicationAPI
-import com.radixdlt.client.application.identity.EncryptedRadixIdentity
+import com.radixdlt.client.application.identity.RadixIdentities
 import com.radixdlt.client.assets.Asset
 import com.radixdlt.client.core.RadixUniverse
 import com.radixdlt.client.core.address.RadixAddress
@@ -27,7 +27,7 @@ import java.math.RoundingMode
 class MainActivity : AppCompatActivity() {
 
     private lateinit var radixAddressTextView: TextView
-    private lateinit var identityButton: Button
+    private lateinit var createIdentityButton: Button
     private lateinit var deleteIdentityButton: Button
     private lateinit var dataButton: Button
     private lateinit var tokenButton: Button
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         radixAddressTextView = findViewById(R.id.radixAddress)
-        identityButton = findViewById(R.id.createIdentity)
+        createIdentityButton = findViewById(R.id.createIdentity)
         deleteIdentityButton = findViewById(R.id.deleteIdentity)
         dataButton = findViewById(R.id.storingRetrievingData)
         tokenButton = findViewById(R.id.sendingRetrievingTokens)
@@ -59,24 +59,14 @@ class MainActivity : AppCompatActivity() {
         // Check that the file exists and load identity with default password
         // If no file disable appropriate buttons
         if (myKeyFile.exists()) {
-            // NOTE: User would be expected to type the password
-            Identity.myIdentity = EncryptedRadixIdentity("123456", myKeyFile.path)
-
-            initMessagingApi()
-
-            // Display the Radix Address in Base58 format using RadixUniverse instance
-            radixAddressTextView.text = RadixUniverse.getInstance()
-                    .getAddressFrom(Identity.myIdentity.getPublicKey())
-                    .toString()
-            identityButton.isEnabled = false
-
-            getBalance()
+            initMainScreenStartUp(myKeyFile)
+            createIdentityButton.isEnabled = false
         } else {
             // Disable/Enable appropriate buttons
             disableEnableButtons(false)
         }
 
-        getTestTokensButton .setOnClickListener {
+        getTestTokensButton.setOnClickListener {
             Toast.makeText(this, "Requesting tokens...", Toast.LENGTH_SHORT).show()
             // Send a message!
             messaging
@@ -93,15 +83,9 @@ class MainActivity : AppCompatActivity() {
 
         // Identity button allows for the creation of an EncryptedIdentity with a
         // default password
-        identityButton.setOnClickListener {
-            // NOTE: Users would be expected to choose their own passwod to encrypt the file
-            Identity.myIdentity = EncryptedRadixIdentity("123456", myKeyFile.path)
+        createIdentityButton.setOnClickListener {
 
-            initMessagingApi()
-
-            radixAddressTextView.text = RadixUniverse.getInstance()
-                    .getAddressFrom(Identity.myIdentity.getPublicKey())
-                    .toString()
+            initMainScreenStartUp(myKeyFile)
 
             // Disable/Enable appropriate buttons
             disableEnableButtons(true)
@@ -129,10 +113,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun initMainScreenStartUp(myKeyFile: File) {
+        // **WARNING**
+        // Loading/Creating encrypted identities is expensive and will block the UI thread.
+        // This operation should be done in a background thread.
+        // NOTE: Users would be expected to choose their own password to encrypt the file
+        Identity.myIdentity = RadixIdentities.loadOrCreateEncryptedFile(myKeyFile.path, "123456")
+
+        initMessagingApi()
+
+        radixAddressTextView.text = RadixUniverse.getInstance()
+                .getAddressFrom(Identity.myIdentity.getPublicKey())
+                .toString()
+
+        getBalance()
+    }
+
     private fun initMessagingApi() {
         // Initialise messaging api
         api = Identity.api
         messaging = RadixMessaging(api)
+        api.pull()
     }
 
     // Function which allows for the address balance to be retrieved
@@ -155,7 +156,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun disableEnableButtons(boolean: Boolean) {
-        identityButton.isEnabled = !boolean
+        createIdentityButton.isEnabled = !boolean
         deleteIdentityButton.isEnabled = boolean
         dataButton.isEnabled = boolean
         tokenButton.isEnabled = boolean
