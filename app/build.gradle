@@ -39,8 +39,8 @@ dependencies {
   // The java dependency requires the minSdkVersion to be 24 (Android Nougat)
   // Kotlin does not have any restrictions and is currently tested and in use with the official
   // radix android wallet supporting minSdkVersion 21
-  implementation 'com.radixdlt.radixdlt-kotlin:radixdlt-kotlin:0.11.2'
-//  implementation 'com.radixdlt:radixdlt-java:0.11.2'
+  implementation 'com.radixdlt:radixdlt-kotlin:0.11.3'
+//  implementation 'com.radixdlt:radixdlt-java:0.11.3'
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'com.android.support.test:runner:1.0.2'
