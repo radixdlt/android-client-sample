@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var disposableBalance: Disposable
 
-    val FAUCET_ADDRESS = "9egHejbV2z1p1Luy2mER4BXsaHbyM67LdaLrUoJ9YSFRGCw1XPC"
+    val FAUCET_ADDRESS = "9he94tVfQGAVr4xoUpG3uJfB2exURExzFV6E7dq4bxUWRbM5Edd"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
